@@ -172,7 +172,7 @@ class affichage():
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else: fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg").convert_alpha()
+        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
         clock = pygame.time.Clock()
         my_font = pygame.font.SysFont("Calibri", 36)
         bandeaubleue = pygame.image.load("battle/animation/Fightblue.png").convert_alpha()
@@ -299,7 +299,7 @@ class affichage():
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else: fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg").convert_alpha()
+        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
 
         bulle = pygame.image.load("battle/animation/bullecombat.png")
         barreviemonstre = pygame.image.load("battle/animation/barreviemonstre.png")
@@ -323,9 +323,9 @@ class affichage():
 
         fenetre.blit(fond, (0, 0))
         fenetre.blit(bulle, (0, 420))
-        if voleur.poison>0:
+        if voleur.poison>0 or sinatramechante.poison:
             fenetre.blit(poison, (770, 380))
-        if sinatra.poison==True:
+        if sinatra.poison:
             fenetre.blit(poison, (20, 380))
 
         for i in range(4):
@@ -335,7 +335,6 @@ class affichage():
         pourcentagepvjoueur=int((perso_joueur.vie/perso_joueur.viemax)*100)
         pourcentagepvdavid = int((david.vie / david.viemax) * 100)
         pourcentagepvsinatra = int((sinatra.vie / sinatra.viemax) * 100)
-        print(pourcentagepvsinatra)
 
         fenetre.blit(barreviemonstre, (0, 20))
         fenetre.blit(barreviemonstre1, (pourcentagepvennemie*2-200, 20))
@@ -473,7 +472,7 @@ class affichage():
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else: fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg").convert_alpha()
+        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
         clock = pygame.time.Clock()
         my_font = pygame.font.SysFont("Calibri", 36)
         bandeaubleue = pygame.image.load("battle/animation/Fightblue.png").convert_alpha()
@@ -833,6 +832,9 @@ class sinatramechante(ennemi):
                         david.vie -= (d - david.armure-david.ptbouclier*2)
                 elif fennemi.p == 1:
                     perso_joueur.vie -= (d - perso_joueur.armure)
+        if self.poison==True:
+            david.vie-=10
+            perso_joueur.vie-=10
 
         affichage.affichageanimennemi(d, varanim)
         fennemi.verification()

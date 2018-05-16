@@ -146,7 +146,7 @@ class classmapbasique():
         else:
             self.incporte=0
         if self.affichetext2:
-            fenetre.blit(self.myfont.render("PRESS F", True, (0,0,0)), (perso.rect.x-75, perso.rect.y))
+            fenetre.blit(self.myfont.render("PRESS E", True, (0,0,0)), (perso.rect.x-75, perso.rect.y))
         fenetre.blit(self.bandeau, (0,0))
         if self.queteactive != "":  # Si il y a une quete, on blit la description
             if self.queteactive != "Jeanma":

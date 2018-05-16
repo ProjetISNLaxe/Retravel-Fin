@@ -214,21 +214,21 @@ class Personnage(pygame.sprite.Sprite):
         else:
             self.speed = SPEED
         if (tkey[K_UP] or tkey[K_w]) and position.y >= 0 or (tkey[K_UP] or tkey[K_w]) and self.rect.y > 300:
-            for i in range(int(self.size[1] /4+1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x - position.x, self.rect.y - i - position.y)) or self.rect.x <= 0:
                     break
                 if i == int(self.size[1] /4):
                     self.moveTop()
         elif (tkey[K_UP] or tkey[K_w]) and position.y <= 0:
-            for i in range(int(self.size[1] /4+1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x, self.rect.y - position.y - i)):
                     break
                 if i == int(self.size[1] /4):
                     self.mapTop(position)
         if (tkey[K_DOWN] or tkey[K_s]) and position.y <= -taille[1] + 600 or (tkey[K_DOWN] or tkey[K_s]) and self.rect.y < 200:
 
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x - position.x, self.rect.y + i - position.y)) or self.rect.y >= 600 - \
                         self.size[1]:
@@ -236,28 +236,28 @@ class Personnage(pygame.sprite.Sprite):
                 if i == int(self.size[1] /4):
                     self.moveDown()
         elif (tkey[K_DOWN] or tkey[K_s]) and position.y >= -taille[1] + 600:
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x, self.rect.y - position.y + i)):
                     break
                 if i == int(self.size[1] /4):
                     self.mapDown(position)
 
         if (tkey[K_LEFT] or tkey[K_a]) and position.x >= 0 or (tkey[K_LEFT] or tkey[K_a]) and self.rect.x > 400:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x - i - position.x, self.rect.y - position.y)) or self.rect.x <= 0:
                     break
                 if i == int(self.size[0] /4):
                     self.moveLeft()
         elif (tkey[K_LEFT] or tkey[K_a]) and position.x <= 0:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x - i, self.rect.y - position.y)):
                     break
                 if i == int(self.size[0] /4):
                     self.mapLeft(position)
 
         if (tkey[K_RIGHT] or tkey[K_d]) and position.x <= -taille[0] + 800 or (tkey[K_RIGHT] or tkey[K_d]) and self.rect.x < 400:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x + i - position.x, self.rect.y - position.y)) or self.rect.x >= 800 - \
                         self.size[0]:
@@ -265,7 +265,7 @@ class Personnage(pygame.sprite.Sprite):
                 if i == int(self.size[0] /4):
                     self.moveRight()
         elif (tkey[K_RIGHT] or tkey[K_d]) and position.x >= -taille[0] + 800:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x + i, self.rect.y - position.y)):
                     break
                 if i == int(self.size[0] /4):
@@ -322,7 +322,7 @@ class Personnage(pygame.sprite.Sprite):
                 if i == int(self.size[1] /4 - 1):
                     self.moveTop()
         elif (tkey[K_UP] or tkey[K_w]) and position.y <= 0:
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x, self.rect.y - position.y - i)):
                     break
                 for j in range(len(pnj)):
@@ -335,7 +335,7 @@ class Personnage(pygame.sprite.Sprite):
                     self.mapTop(position)
         if (tkey[K_DOWN] or tkey[K_s]) and position.y <= -taille[1] + 600 or (tkey[K_DOWN] or tkey[K_s]) and self.rect.y < 200:
 
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x - position.x, self.rect.y + 1 - position.y)) or self.rect.y >= 600 - \
                         self.size[1]:
@@ -343,28 +343,28 @@ class Personnage(pygame.sprite.Sprite):
                 if i == int(self.size[1] /4):
                     self.moveDown()
         elif (tkey[K_DOWN] or tkey[K_s]) and position.y >= -taille[1] + 600:
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x, self.rect.y - position.y + 1)):
                     break
                 if i == int(self.size[1] /4):
                     self.mapDown(position)
 
         if (tkey[K_LEFT] or tkey[K_a]) and position.x >= 0 or (tkey[K_LEFT] or tkey[K_a]) and self.rect.x > 400:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x - i - position.x, self.rect.y - position.y)) or self.rect.x <= 0:
                     break
                 if i == int(self.size[0] /4):
                     self.moveLeft()
         elif (tkey[K_LEFT] or tkey[K_a]) and position.x <= 0:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x - i, self.rect.y - position.y)):
                     break
                 if i == int(self.size[0] /4):
                     self.mapLeft(position)
 
         if (tkey[K_RIGHT] or tkey[K_d]) and position.x <= -taille[0] + 800 or (tkey[K_RIGHT] or tkey[K_d]) and self.rect.x < 400:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x + i - position.x, self.rect.y - position.y)) or self.rect.x >= 800 - \
                         self.size[0]:
@@ -372,7 +372,7 @@ class Personnage(pygame.sprite.Sprite):
                 if i == int(self.size[0] /4):
                     self.moveRight()
         elif (tkey[K_RIGHT] or tkey[K_d]) and position.x >= -taille[0] + 800:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x + i, self.rect.y - position.y)):
                     break
                 if i == int(self.size[0] /4):
@@ -416,74 +416,74 @@ class Personnage(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.imageperso)
         tkey = pygame.key.get_pressed()
         if (tkey[K_UP] or tkey[K_w]) and position.y >= 0 or (tkey[K_UP] or tkey[K_w]) and self.rect.y > 300 or self.glisstop and position.y >= 0 or self.glisstop and self.rect.y > 300:
-            for i in range(int(self.size[1] /4)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x - position.x, self.rect.y - i - position.y)) or self.rect.x <= 0:
                     self.glisstop = False
                     break
                 if i == int(
-                        self.size[1] /4 - 1) and not self.glissright and not self.glissleft and not self.glissdown:
+                        self.size[1] /3) and not self.glissright and not self.glissleft and not self.glissdown:
                     self.glisstop = True
                     self.glisseTop()
         elif (tkey[K_UP] or tkey[K_w]) and position.y <= 0 or self.glisstop and position.y <= 0:
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x, self.rect.y - position.y - i)):
                     self.glisstop = False
                     break
-                if i == int(self.size[1] /4) and not self.glissright and not self.glissleft and not self.glissdown:
+                if i == int(self.size[1] /3) and not self.glissright and not self.glissleft and not self.glissdown:
                     self.glisstop = True
                     self.mapglisseTop(position)
         if (tkey[K_DOWN] or tkey[K_s]) and position.y <= -taille[1] + 600 or (tkey[K_DOWN] or tkey[K_s]) and self.rect.y < 200 or self.glissdown and position.y <= -taille[1] + 600 or self.glissdown and self.rect.y < 200:
 
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask,(self.rect.x - position.x, self.rect.y + 1 - position.y)) or self.rect.y >= 600 - self.size[1]:
                     self.glissdown = False
                     break
-                if i == int(self.size[1] /4) and not self.glisstop and not self.glissright and not self.glissleft:
+                if i == int(self.size[1] /3) and not self.glisstop and not self.glissright and not self.glissleft:
                     self.glissdown = True
                     self.glisseDown()
         elif (tkey[K_DOWN] or tkey[K_s]) and position.y >= -taille[1] + 600 or self.glissdown and position.y >= -taille[1] + 600:
-            for i in range(int(self.size[1] /4 + 1)):
+            for i in range(int(self.size[1] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x, self.rect.y - position.y + 1)):
                     self.glissdown = False
                     break
-                if i == int(self.size[1] /4) and not self.glisstop and not self.glissright and not self.glissleft:
+                if i == int(self.size[1] /3) and not self.glisstop and not self.glissright and not self.glissleft:
                     self.glissdown = True
                     self.mapglisseDown(position)
 
         if (tkey[K_LEFT] or tkey[K_a]) and position.x >= 0 or (tkey[K_LEFT] or tkey[K_a]) and self.rect.x > 400 or self.glissleft and position.x >= 0 or self.glissleft and self.rect.x > 400:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask,
                                   (self.rect.x - i - position.x, self.rect.y - position.y)) or self.rect.x <= 0:
                     self.glissleft = False
                     break
-                if i == int(self.size[0] /4) and not self.glisstop and not self.glissright and not self.glissdown:
+                if i == int(self.size[0] /3) and not self.glisstop and not self.glissright and not self.glissdown:
                     self.glissleft = True
                     self.glisseLeft()
         elif (tkey[K_LEFT] or tkey[K_a]) and position.x <= 0 or self.glissleft and position.x <= 0:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x - i, self.rect.y - position.y)):
                     self.glissleft = False
                     break
-                if i == int(self.size[0] /4) and not self.glisstop and not self.glissright and not self.glissdown:
+                if i == int(self.size[0] /3) and not self.glisstop and not self.glissright and not self.glissdown:
                     self.glissleft = True
                     self.mapglisseLeft(position)
 
         if (tkey[K_RIGHT] or tkey[K_d]) and position.x <= -taille[0] + 800 or (tkey[K_RIGHT] or tkey[K_d]) and self.rect.x < 400 or self.glissright and position.x <= -taille[
             0] + 800 or self.glissright and self.rect.x < 400:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask,(self.rect.x + i - position.x, self.rect.y - position.y)) or self.rect.x >= 800 - self.size[0]:
                     self.glissright = False
                     break
-                if i == int(self.size[0] /4) and not self.glisstop and not self.glissleft and not self.glissdown:
+                if i == int(self.size[0] /3) and not self.glisstop and not self.glissleft and not self.glissdown:
                     self.glissright = True
                     self.glisseRight()
         elif (tkey[K_RIGHT] or tkey[K_d]) and position.x >= -taille[0] + 800 or self.glissright and position.x >= -taille[0] + 800:
-            for i in range(int(self.size[0] /4 + 1)):
+            for i in range(int(self.size[0] /3+1)):
                 if masque.overlap(self.mask, (self.rect.x - position.x + i, self.rect.y - position.y)):
                     self.glissright = False
                     break
-                if i == int(self.size[0] /4) and not self.glisstop and not self.glissleft and not self.glissdown:
+                if i == int(self.size[0] /3) and not self.glisstop and not self.glissleft and not self.glissdown:
                     self.glissright = True
                     self.mapglisseRight(position)
 
