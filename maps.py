@@ -2515,8 +2515,10 @@ def butin():
                 fichier.write("sinatramechante")
                 fichier.close()
                 quete.quetes()
+                with open("save1/activation/perso3", "r") as perso3:
+                    perso3 = bool(int(perso3.read()))
 
-        # fenetre.blit(image_dessus, mapcl.rect)
+
 
         if imagemaps.map["transi"+mapcl.name+"mask"][0].overlap(perso.mask,
                                      (perso.rect.x - mapcl.rect.x, perso.rect.y - mapcl.rect.y)) and not onstairs:
