@@ -15,11 +15,11 @@ else:
     fenetre = pygame.display.set_mode((800, 600), FULLSCREEN)
 
 
-class attaqueennemi():  # les fonction dont vont se servir les ennemies
+class attaqueennemi():
     def __init__(self):
-        self.p = 0 # la cible
+        self.p = 0
 
-    def cible(self): # la definition de la cible
+    def cible(self):
         if not sinatra.active:
             n = [1, 2]
         else:
@@ -36,7 +36,7 @@ class attaqueennemi():  # les fonction dont vont se servir les ennemies
         while self.p == 0:
             self.p = choice(n)
 
-    def verification(self): # on verifi si les perso sont toujours en vie
+    def verification(self):
         if david.vie <= 0:
             david.alive = False
             david.vie = 0
@@ -72,18 +72,18 @@ class attaqueennemi():  # les fonction dont vont se servir les ennemies
 
             maps.selecmap()
 
-class menu:  # la classe gérant les menu
+class menu:
     def __init__(self):
         self.menu_ = 0
 
 
-class sac:  # la classe gerant les objet
+class sac:
     def __init__(self, q, image):
         self.quantite = q
         self.imageanim = pygame.image.load(image).convert_alpha()
 
 
-class bataille:  # la classe gérant le combat en lui meme
+class bataille:
     def __init__(self):
         self.etat = "combatencour"
         self.anim = 0
@@ -91,7 +91,7 @@ class bataille:  # la classe gérant le combat en lui meme
         self.hardcore=False
 
 
-class perso(pygame.sprite.Sprite): # la classe de base des perso
+class perso(pygame.sprite.Sprite):
     def __init__(self, imageperso, imageperso2, *groups):
         super().__init__(*groups)
         self.image = pygame.image.load(imageperso).convert_alpha()
@@ -114,7 +114,7 @@ class perso(pygame.sprite.Sprite): # la classe de base des perso
             self.ptdecompetance += 1
 
 
-class perso1(perso): # la classe du premier perso
+class perso1(perso):
     def __init__(self):
         perso.__init__(self, "battle/imagebonhomme/joueur/combivaisseau/Perso1nship0.png",
                        "battle/imagebonhomme/joueur/combivaisseau/Perso1nship1.png")
@@ -129,7 +129,7 @@ class perso1(perso): # la classe du premier perso
             self.sortdefeu = True
 
 
-class perso2(perso): # la callsse du deuxieme perso
+class perso2(perso):
     def __init__(self):
         perso.__init__(self, "battle/imagebonhomme/perso2/perso2base0.png", "battle/imagebonhomme/perso2/perso2base1.png")
         self.vie = 200
@@ -140,7 +140,7 @@ class perso2(perso): # la callsse du deuxieme perso
         self.viemax = 200 + (self.ptvie * 20)
 
 
-class perso3(perso): # la classe du troisieme perso
+class perso3(perso):
     def __init__(self):
         perso.__init__(self, "battle/imagebonhomme/perso3/perso3armurebase.png",
                        "battle/imagebonhomme/perso3/perso3armurebase2.png")
@@ -151,7 +151,7 @@ class perso3(perso): # la classe du troisieme perso
         self.viemax = 150 + (self.ptvie * 20)
 
 
-class affichage(): # la classe gerant tous les affichages en fonction des tours et des attaques
+class affichage():
     def __init__(self):
         0
 
@@ -172,7 +172,7 @@ class affichage(): # la classe gerant tous les affichages en fonction des tours 
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
+        else:fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
         clock = pygame.time.Clock()
         my_font = pygame.font.SysFont("Calibri", 36)
         bandeaubleue = pygame.image.load("battle/animation/Fightblue.png").convert_alpha()
@@ -299,8 +299,8 @@ class affichage(): # la classe gerant tous les affichages en fonction des tours 
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
-
+        else:fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg"
+                                      )
         bulle = pygame.image.load("battle/animation/bullecombat.png")
         barreviemonstre = pygame.image.load("battle/animation/barreviemonstre.png")
         barreviemonstre1 = pygame.image.load("battle/animation/barreviemonstre1.png")
@@ -472,7 +472,7 @@ class affichage(): # la classe gerant tous les affichages en fonction des tours 
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
+        else:fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
         clock = pygame.time.Clock()
         my_font = pygame.font.SysFont("Calibri", 36)
         bandeaubleue = pygame.image.load("battle/animation/Fightblue.png").convert_alpha()
@@ -585,21 +585,21 @@ class affichage(): # la classe gerant tous les affichages en fonction des tours 
             i += 1
 
 
-class ennemi(pygame.sprite.Sprite): # la classes de bases des ennemie
+class ennemi(pygame.sprite.Sprite):
     def __init__(self, imageperso, *groups):
         super().__init__(*groups)
         self.image = pygame.image.load(imageperso).convert_alpha()
         self.rect = self.image.get_rect()
         self.alive = False
         self.viemax=0
+        self.vie=0
 
 
-class loup(ennemi): # la classe du loup
+class loup(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/imagebonhomme/ennemi/cerberus.png")
-        self.vie = 50
 
-    def attaque(self): # l'attaque du loup
+    def attaque(self):
         fennemi.cible()
         if combat.hardcore==True:
             d = randint(30+(perso_joueur.niveau*3), 45+(perso_joueur.niveau*3))
@@ -620,10 +620,9 @@ class loup(ennemi): # la classe du loup
         fennemi.verification()
 
 
-class bestiole(ennemi):# la classe dde la bestiole
+class bestiole(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/mob/Imp.png")
-        self.vie = 100
 
     def attaque(self):
         for i in range(2):
@@ -647,10 +646,9 @@ class bestiole(ennemi):# la classe dde la bestiole
             fennemi.verification()
 
 
-class soldatpt(ennemi):# la classe du soldat
+class soldatpt(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/mob/soldier.png")
-        self.vie = 300
 
     def attaque(self):
         fennemi.cible()
@@ -673,11 +671,9 @@ class soldatpt(ennemi):# la classe du soldat
         fennemi.verification()
 
 
-class malarich(ennemi):# la classe du malarich
+class malarich(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/mob/darklord.png")
-        self.vie = 500
-
     def attaque(self):
         fennemi.cible()
         u = randint(0, 3)
@@ -758,10 +754,9 @@ class malarich(ennemi):# la classe du malarich
         fennemi.verification()
 
 
-class voleur(ennemi):# la classe du voleur
+class voleur(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/mob/Rogue.png")
-        self.vie = 120
         self.poison = 0
 
     def attaque(self):
@@ -791,10 +786,9 @@ class voleur(ennemi):# la classe du voleur
             perso_joueur.vie-=10
         fennemi.verification()
 
-class sinatramechante(ennemi):# la classe de sinatra mechante
+class sinatramechante(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/imagebonhomme/perso3/perso3armurebase.png")
-        self.vie = 150
         self.poison = False
         self.esquive=False
 
@@ -839,10 +833,9 @@ class sinatramechante(ennemi):# la classe de sinatra mechante
         affichage.affichageanimennemi(d, varanim)
         fennemi.verification()
 
-class hornet(ennemi):# la classe de la hornet
+class hornet(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/mob/Hornet.png")
-        self.vie = 50
 
     def attaque(self):
         for i in range(2):
@@ -865,10 +858,9 @@ class hornet(ennemi):# la classe de la hornet
             affichage.affichageanimennemi(d, varanim)
             fennemi.verification()
 
-class goddess(ennemi):# la classe de la goddess
+class goddess(ennemi):
     def __init__(self):
         ennemi.__init__(self, "battle/mob/Goddess.png")
-        self.vie = 3000
         self.malediction=0
         self.soin=1
 
@@ -928,7 +920,7 @@ class goddess(ennemi):# la classe de la goddess
         affichage.affichageanimennemi(d, varanim)
         fennemi.verification()
 
-fichier = open("menu/quetes/mobmort", "r")# toute les initialisation de classe
+fichier = open("menu/quetes/mobmort", "r")
 nomennemie = fichier.read()
 fichier.close()
 perso_joueur = perso1()
