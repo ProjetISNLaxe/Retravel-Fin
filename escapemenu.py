@@ -107,7 +107,7 @@ class aide():
                         if self.bouton1().mask.overlap(testmask, (testrect.x - self.rect.x, testrect.y - self.rect.y)):
                             self.tutoriel()
                         if self.bouton2().mask.overlap(testmask, (testrect.x - self.rect.x, testrect.y - self.rect.y)):
-                            quetefi = open("menu/quetes/", "r")
+                            quetefi = open("menu/quetes/active", "r")
                             pnj = quetefi.read()
                             quetefi.close()
                             dialogue.affichquete(pnj)

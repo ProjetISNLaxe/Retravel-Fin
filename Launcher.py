@@ -119,6 +119,7 @@ def launcher():
 
             if event.type == MOUSEBUTTONDOWN and event.button == 1:
                 if clique == 2:
+                    pygame.mixer.music.set_volume(1)
                     endle= Endless()
                     endle.interface()
                     save = open("save1\\save", "r")

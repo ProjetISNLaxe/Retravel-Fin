@@ -3,7 +3,7 @@ from pygame.locals import *
 from classes.perso_classes import *
 from classes.classes_tpt import *
 import menu.closemenu as closemenu, menu.printinvent as printinvent, menu.dialogue as dialogue, menu.shop as shop
-import battle.combatV3
+import battle.combatV3 as combat
 import classes.classes_map as classes_map
 from math import sqrt
 import escapemenu
@@ -271,7 +271,6 @@ def capitale():
             if dist < 20:
                 dialogue.jeanmadia("Il est rentré par ce puit !", "suivant")
                 jeanmapuit=False
-
         pygame.display.flip()  # On raffraichis l'ecran
         clock.tick(60)  # 60 FPS
 
@@ -538,11 +537,6 @@ def auberge_1F():
         perso.eventkey(mapcl.rect, mapcl.mask, mapcl.size)
         tkey = pygame.key.get_pressed()
         mapcl.interaction(perso, fenetre)
-        for i in range(len(mapcl.pnjli)):
-            if mapcl.maskpnj[i].overlap(perso.mask, (perso.rect.x - mapcl.rect.x, perso.rect.y - mapcl.rect.y)):
-                affichetext = True
-            else:
-                affichetext = False
         if tkey[K_e] and time.time() - testtime > 0.5:
 
             if imagemaps.map["transi"+mapcl.name+"mask"][0].overlap(perso.mask, (perso.rect.x - mapcl.rect.x, perso.rect.y - mapcl.rect.y)):

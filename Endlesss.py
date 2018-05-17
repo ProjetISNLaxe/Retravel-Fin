@@ -38,9 +38,9 @@ class Endless():
             save = open("save1\\save", "r")
             RPG = bool(int(save.read()))
             save.close()
-            if RPG:
-                self.image = boutonRPG
-            else: self.image = boutonRPGlock
+
+            self.image = boutonRPG
+
             self.mask = boutonRPGmask
 
     class bouton3():
@@ -48,9 +48,9 @@ class Endless():
             save = open("save1\\runner", "r")
             runner = bool(int(save.read()))
             save.close()
-            if runner:
-                self.image = boutonrunner
-            else: self.image = boutonrunnerlock
+
+            self.image = boutonrunner
+
             self.mask = boutonrunnermask
 
     def interface(self):
