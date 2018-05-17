@@ -236,7 +236,7 @@ def tourpartour(): # fonction principale avec variables
             goddess.vie = 3000
             enemitipe.viemax = goddess.vie
         elif nomennemie == "sinatramechante":
-            goddess.vie = 150
+            sinatramechante.vie = 150
             enemitipe.viemax = sinatramechante.vie
     else:
         if nomennemie == "loup":
@@ -261,7 +261,7 @@ def tourpartour(): # fonction principale avec variables
             goddess.vie = 4000
             enemitipe.viemax = goddess.vie
         elif nomennemie == "sinatramechante":
-            goddess.vie = 200
+            sinatramechante.vie = 200
             enemitipe.viemax = sinatramechante.vie
     chargementsauvegarde()
     action = ["attaque", "objet", "fuite", ""]

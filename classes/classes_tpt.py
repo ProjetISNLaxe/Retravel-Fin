@@ -172,7 +172,7 @@ class affichage():
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else:fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
+        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
         clock = pygame.time.Clock()
         my_font = pygame.font.SysFont("Calibri", 36)
         bandeaubleue = pygame.image.load("battle/animation/Fightblue.png").convert_alpha()
@@ -299,8 +299,8 @@ class affichage():
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else:fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg"
-                                      )
+        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
+
         bulle = pygame.image.load("battle/animation/bullecombat.png")
         barreviemonstre = pygame.image.load("battle/animation/barreviemonstre.png")
         barreviemonstre1 = pygame.image.load("battle/animation/barreviemonstre1.png")
@@ -343,16 +343,17 @@ class affichage():
 
 
         fenetre.blit(my_font2.render(str(enemitipe.vie), False, (255, 255, 255)), (210, 20))
+
+        if objet.menu_ == 1:
+            fenetre.blit(my_font.render(str(soin.quantite), False, (255, 255, 255)), (670, 520))
+            fenetre.blit(my_font.render(str(resurection.quantite), False, (255, 255, 255)), (670, 500))
+            if combat.tour==1:
+                fenetre.blit(my_font.render(str(manap.quantite), False, (255, 255, 255)), (670, 540))
         if combat.tour == 1:
             fenetre.blit(my_font.render(str(perso_joueur.mana), False, (255, 255, 255)), (80, 500))
             fenetre.blit(my_font.render(str(perso_joueur.fleche), False, (255, 255, 255)), (80, 520))
             fenetre.blit(my_font.render("mana:", False, (255, 255, 255)), (20, 500))
             fenetre.blit(my_font.render("fleches:", False, (255, 255, 255)), (20, 520))
-        if objet.menu_ == 1:
-            fenetre.blit(my_font.render(str(soin.quantite), False, (255, 255, 255)), (670, 520))
-            fenetre.blit(my_font.render(str(resurection.quantite), False, (255, 255, 255)), (670, 500))
-            fenetre.blit(my_font.render(str(manap.quantite), False, (255, 255, 255)), (670, 540))
-        if combat.tour == 1:
             if not sinatra.active:
                 david.rect = position2  # endroit de spawn du perso
                 perso_joueur.rect = position1
@@ -472,7 +473,7 @@ class affichage():
             fond = pygame.image.load("battle/Battlebacks/icecave.png").convert_alpha()
         elif map=="village":
             fond = pygame.image.load("battle/Battlebacks/003-Forest01.jpg")
-        else:fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
+        else :fond = pygame.image.load("battle/Battlebacks/043-Cave01.jpg")
         clock = pygame.time.Clock()
         my_font = pygame.font.SysFont("Calibri", 36)
         bandeaubleue = pygame.image.load("battle/animation/Fightblue.png").convert_alpha()
