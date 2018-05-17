@@ -89,9 +89,6 @@ def attaqued(d,nomennemie): # fonction qui gére les combat infligé au ennemie 
         if random.random() <= 0.5:
             d = 0
         sinatramechante.vie -= d
-        if sinatramechante.poison == True:
-            david.vie -= 10
-            perso_joueur.vie -= 10
         if sinatramechante.vie <= 0 or combat.etat == "fuite":
             sinatramechante.vie = 150
             sinatramechante.poison = False
@@ -132,7 +129,7 @@ def menubase(choix, c): #les actions du menu de base
     return choix, c
 
 
-def menuobjet(choix, a, c): #les actions du menu objet et leur activation en fonction de chaque personnage
+def menuobjet(choix, a, c): #les actions du menu objet
     if choix == 4 and c:
         c = False
         base.menu_ = 1
@@ -178,24 +175,24 @@ def menuobjet(choix, a, c): #les actions du menu objet et leur activation en fon
     elif choix == 1 and resurection.quantite > 0 and a == 0 and c:
         if david.ingame:
             if sinatra.active and sinatra.vie == 0:
-                sinatra.vie = 50
+                sinatra.vie = sinatra.viemax/2
                 sinatra.alive = True
             if perso_joueur.vie == 0:
-                perso_joueur.vie = 75
+                perso_joueur.vie = perso_joueur.viemax/2
                 perso_joueur.alive = True
         elif perso_joueur.ingame:
             if sinatra.active and sinatra.vie == 0:
-                sinatra.vie = 50
+                sinatra.vie = sinatra.viemax/2
                 sinatra.alive = True
             if david.vie == 0:
-                david.vie = 100
+                david.vie = david.viemax/2
                 david.alive = True
         elif sinatra.ingame:
             if david.vie == 0:
-                david.vie = 100
+                david.vie = david.viemax/2
                 david.alive = True
             if perso_joueur.vie == 0:
-                perso_joueur.vie = 75
+                perso_joueur.vie = david.viemax/2
                 perso_joueur.alive = True
 
         resurection.quantite -= 1
@@ -211,13 +208,12 @@ def menuobjet(choix, a, c): #les actions du menu objet et leur activation en fon
 
 def tourpartour(): # fonction principale avec variables
 
-    fichier = open("menu/quetes/mobmort", "r") # on definie l'ennemie
-
+    fichier = open("menu/quetes/mobmort", "r")
     nomennemie = fichier.read()
     fichier.close()
     if nomennemie=="":
         return
-    if combat.hardcore==False: # on lui donne des pv
+    if combat.hardcore==False:
         if nomennemie == "loup":
             loup.vie = 50+(perso_joueur.niveau*3)
             enemitipe.viemax=loup.vie
@@ -239,6 +235,9 @@ def tourpartour(): # fonction principale avec variables
         elif nomennemie == "goddess":
             goddess.vie = 3000
             enemitipe.viemax = goddess.vie
+        elif nomennemie == "sinatramechante":
+            goddess.vie = 150
+            enemitipe.viemax = sinatramechante.vie
     else:
         if nomennemie == "loup":
             loup.vie = 70+(perso_joueur.niveau*7)
@@ -261,7 +260,9 @@ def tourpartour(): # fonction principale avec variables
         elif nomennemie == "goddess":
             goddess.vie = 4000
             enemitipe.viemax = goddess.vie
-
+        elif nomennemie == "sinatramechante":
+            goddess.vie = 200
+            enemitipe.viemax = sinatramechante.vie
     chargementsauvegarde()
     action = ["attaque", "objet", "fuite", ""]
     perso_joueur.ingame = True
@@ -271,8 +272,7 @@ def tourpartour(): # fonction principale avec variables
 
     choix = 1  # le choix de l'action
     c = False  # la validation du choix
-    d = 0  # degats
-
+    d = 0
 
     a = 0  # une variable de validation de fin de combat.tour
 
@@ -280,8 +280,7 @@ def tourpartour(): # fonction principale avec variables
 
     pygame.key.set_repeat(200, 200)
     clock = pygame.time.Clock()
-    if armure == "cuir": # l'armure du joueur
-
+    if armure == "cuir":
         perso_joueur.armure = 2
     if armure == "chevalier":
         perso_joueur.armure = 8
@@ -302,7 +301,7 @@ def tourpartour(): # fonction principale avec variables
         for event in pygame.event.get():
             if event.type == QUIT:  # pour pouvoir quitter le jeux
                 closemenu.closemenu()
-            if event.type == KEYDOWN:  # les deplacements dans les menues
+            if event.type == KEYDOWN:  # les deplacements
                 if event.key == K_DOWN:
                     choix += 1
                     if choix == 5:
@@ -319,8 +318,7 @@ def tourpartour(): # fonction principale avec variables
                 if event.key == K_SPACE:
                     c = True
 
-        if combat.tour == 1:  # les action pour le tour 1
-
+        if combat.tour == 1:
             perso_joueur.ingame = True
             david.ingame = False
             sinatra.ingame = False
@@ -414,7 +412,7 @@ def tourpartour(): # fonction principale avec variables
             combat.anim = 0
 
 
-        elif combat.tour == 2:  # les action pour le tour 2
+        elif combat.tour == 2:
             perso_joueur.ingame = False
             david.ingame = True
             sinatra.ingame = False
@@ -474,7 +472,7 @@ def tourpartour(): # fonction principale avec variables
                 action = ["resurection", "potion de soin", "retour", ""]
             combat.anim = 0
 
-        elif combat.tour == 3:  # les action pour le tour 3
+        elif combat.tour == 3:
             perso_joueur.ingame = False
             david.ingame = False
             sinatra.ingame = True
@@ -518,7 +516,7 @@ def tourpartour(): # fonction principale avec variables
 
 
 
-        elif combat.tour == 0:  # les action pet attaque des ennemies
+        elif combat.tour == 0:
 
             if nomennemie == "loup":
                 if sinatra.poison:
@@ -568,7 +566,7 @@ def tourpartour(): # fonction principale avec variables
                     sinatra.vie = 0
                 fennemi.verification()
 
-        if nomennemie == "loup":  # les atribution pour l'affichage
+        if nomennemie == "loup":
             enemitipe.vie = loup.vie
             enemitipe.image = loup.image
         if nomennemie == "soldat":
@@ -595,11 +593,11 @@ def tourpartour(): # fonction principale avec variables
 
 
 
-        affichage.affichage(action, choix) # l'affichage
+        affichage.affichage(action, choix)
 
 
 
 
 
-        clock.tick(60)  # le nombre de tour de boucle par seconde
+        clock.tick(60)
     return combat.etat
