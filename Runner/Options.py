@@ -23,7 +23,7 @@ GEM_SPAWN_PCT = 15
 OBSTACLE_SPAWN_PCT = 10
 MOQ_FREQ = 7000
 VIT_SCROLLING = 4
-SCORE_LIMIT = 9
+SCORE_LIMIT = 4
 
 # calques pour les différentes images
 PLAYER_LAYER = 4

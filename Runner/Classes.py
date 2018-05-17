@@ -1,6 +1,6 @@
 ﻿import pygame as pg
 from random import randint, randrange, choice
-from Options import *
+from Runner.Options import *
 vec = pg.math.Vector2
 
 class Player(pg.sprite.Sprite):
@@ -13,11 +13,11 @@ class Player(pg.sprite.Sprite):
         self.jumping = False
         self.invincible = False
         self.invincible_timer = 0
-        self.shield = pg.image.load('img/N-Ship_shield.png').convert_alpha()
+        self.shield = pg.image.load('Runner/img/N-Ship_shield.png').convert_alpha()
         self.current_frame = 0
         self.last_update = 0
         self.vie = 3
-        self.coeur = pg.image.load('img/coeur.png').convert_alpha()
+        self.coeur = pg.image.load('Runner/img/coeur.png').convert_alpha()
         self.load_images()
         self.image = self.standing_frames[0]
         self.rect = self.image.get_rect()
@@ -26,11 +26,11 @@ class Player(pg.sprite.Sprite):
         self.acc = vec(0, 0)
 
     def load_images(self) :
-        self.standing_frames = [pg.image.load('img/R1.png').convert_alpha()]
+        self.standing_frames = [pg.image.load('Runner/img/R1.png').convert_alpha()]
 
-        self.walk_frames_r = [pg.image.load('img/R1.png'),
-                              pg.image.load('img/R2.png'),
-                              pg.image.load('img/R3.png')]
+        self.walk_frames_r = [pg.image.load('Runner/img/R1.png'),
+                              pg.image.load('Runner/img/R2.png'),
+                              pg.image.load('Runner/img/R3.png')]
         self.walk_frames_l = []
         for frame in self.walk_frames_r :
             frame.convert_alpha()
@@ -172,10 +172,10 @@ class Platform(pg.sprite.Sprite):
         else :
             n = randint(2, 10)
         rect_img = []
-        self.platform = [pg.image.load('img/plateforme' + str(self.num_image) + '.png')]
+        self.platform = [pg.image.load('Runner/img/plateforme' + str(self.num_image) + '.png')]
         for i in range (n) :
-            self.platform.append(pg.image.load('img/plateforme' + str(self.num_image+1) + '.png'))
-        self.platform.append(pg.image.load('img/plateforme' + str(self.num_image+2) + '.png'))
+            self.platform.append(pg.image.load('Runner/img/plateforme' + str(self.num_image+1) + '.png'))
+        self.platform.append(pg.image.load('Runner/img/plateforme' + str(self.num_image+2) + '.png'))
         self.plat_image = pg.Surface((40+n*20, 20))
         self.plat_image.set_colorkey(BLACK)
         for i in range (0, len(self.platform)) :
@@ -198,9 +198,9 @@ class Object(pg.sprite.Sprite):
         self.plat = plat
         self.type = type_o
         if self.type == 'boost' :
-            self.image = pg.image.load('img/pow_boost.png').convert_alpha()
+            self.image = pg.image.load('Runner/img/pow_boost.png').convert_alpha()
         if self.type == 'gem' :
-            self.image = pg.image.load('img/gem.png').convert_alpha()
+            self.image = pg.image.load('Runner/img/gem.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.centerx = self.plat.rect.centerx
         self.rect.bottom = self.plat.rect.top-3
@@ -232,8 +232,8 @@ class Mob_ship(pg.sprite.Sprite):
         self.frames = []
         for i in range (1, 5) :
             for j in range (3) :
-                self.frames.append(pg.image.load('img/ship0.png'))
-            self.frames.append(pg.image.load('img/ship' + str(i) + '.png'))
+                self.frames.append(pg.image.load('Runner/img/ship0.png'))
+            self.frames.append(pg.image.load('Runner/img/ship' + str(i) + '.png'))
         for frame in self.frames :
             frame.convert_alpha()
 
@@ -266,9 +266,9 @@ class Portal(pg.sprite.Sprite):
         self.game = game
         self.type = type_portal
         if self.type == 'portal1' :
-            self.image = pg.image.load('img/portal.png').convert_alpha()
+            self.image = pg.image.load('Runner/img/portal.png').convert_alpha()
         if self.type == 'portal2' :
-            self.image = pg.image.load('img/portal2.png').convert_alpha()
+            self.image = pg.image.load('Runner/img/portal2.png').convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.x = LARGEUR+5
         self.rect.y = 10
@@ -303,8 +303,8 @@ class Obstacle(pg.sprite.Sprite):
         self.frames = []
         for i in range (5) :
             for j in range (3) :
-                self.frames.append(pg.image.load('img/champelec_none.png'))
-            self.frames.append(pg.image.load('img/champ_elec' + str(i) + '.png'))
+                self.frames.append(pg.image.load('Runner/img/champelec_none.png'))
+            self.frames.append(pg.image.load('Runner/img/champ_elec' + str(i) + '.png'))
         for frame in self.frames :
             frame.convert_alpha()
 
@@ -332,7 +332,7 @@ class Obstacle(pg.sprite.Sprite):
     def pics_img(self) :
         n = int(randint(1, self.plat.rect.width/20))
         rect_img = []
-        self.pic = [pg.image.load('img/pic.png').convert_alpha()]
+        self.pic = [pg.image.load('Runner/img/pic.png').convert_alpha()]
         for i in range (n) :
             self.pic.append(self.pic[0])
         self.pic_img = pg.Surface((20*n, 29))
@@ -355,8 +355,8 @@ class Boss(pg.sprite.Sprite):
         self.protection = False
         self.protection_timer = 0
         self.vie = 5
-        self.coeur = pg.image.load('img/coeur_boss.png').convert_alpha()
-        self.head = pg.image.load('img/boss_head.png').convert_alpha()
+        self.coeur = pg.image.load('Runner/img/coeur_boss.png').convert_alpha()
+        self.head = pg.image.load('Runner/img/boss_head.png').convert_alpha()
         self.load_images()
         self.image = self.standing_frames[0]
         self.rect = self.image.get_rect()
@@ -369,12 +369,12 @@ class Boss(pg.sprite.Sprite):
             self.walk_frames_l = []
 
             for i in range (14) :
-                self.standing_frames.append(pg.image.load('img/boss' + str(i) +'.png').convert_alpha())
+                self.standing_frames.append(pg.image.load('Runner/img/boss' + str(i) +'.png').convert_alpha())
             for i in range (5) :
-                self.walk_frames_r.append(pg.image.load('img/boss_move' + str(i) +'.png').convert_alpha())
+                self.walk_frames_r.append(pg.image.load('Runner/img/boss_move' + str(i) +'.png').convert_alpha())
             for frame in self.walk_frames_r :
                 self.walk_frames_l.append(pg.transform.flip(frame, True, False))
-            self.died_img = pg.image.load('img/boss_died.png').convert_alpha()
+            self.died_img = pg.image.load('Runner/img/boss_died.png').convert_alpha()
 
     def update(self):
         if self.vie > 0 :
