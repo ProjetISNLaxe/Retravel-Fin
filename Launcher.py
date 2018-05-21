@@ -6,6 +6,7 @@
 import pygame
 from pygame.locals import *
 pygame.init()
+pygame.mixer.init()
 pygame.mixer.music.load("son/Sound/launcher.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play()
