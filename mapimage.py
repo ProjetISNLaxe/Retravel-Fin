@@ -11,7 +11,6 @@ else:
 class imagemap:
     def __init__(self):
         self.map = {}
-        grandemap = pygame.image.load("map/map.png").convert_alpha()
         self.map["capitale"] = pygame.image.load("map/capitale/capitale.png").convert_alpha()
         for i in range(785):
             fenetre.fill((0, 0, 0))
