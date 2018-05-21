@@ -161,7 +161,7 @@ class Platform(pg.sprite.Sprite):
                 if randrange(100) < GEM_SPAWN_PCT :
                     Object(self.game, self, 'gem')
         if not self.game.spawned_portal and not self.game.spawned_portal2 :
-            if randrange(100) < BOOST_SPAWN_PCT :
+            if randrange(100) < BOOST_SPAWN_PCT and self.game.score > 0 :
                 Object(self.game, self, 'boost')
 
 
